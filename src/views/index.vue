@@ -45,9 +45,13 @@
                         С любовью, ваш <a href="#" class="default-link">Сибтех</a>
                     </div>
                 </div>
-
             </div>
         </div>
+        <img
+            src="/images/auth-decor.png"
+            alt="auth-decor"
+            class="auth-decor"
+        >
     </main>
 </template>
 
@@ -93,6 +97,7 @@ const login = () => {
 main
     position: relative
     background-color: $base-primary
+    overflow: hidden
 
     .auth
         &-wrapper
@@ -152,5 +157,13 @@ main
             font-weight: 400
             line-height: 24px
             letter-spacing: -0.64px
+
+        &-decor
+            position: absolute
+            top: 44px
+            right: 8px
+            width: 70%
+            height: 110%
+            object-fit: cover
 
 </style>
