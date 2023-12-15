@@ -1,10 +1,11 @@
 <template>
-    <div class="RefactorForms">
-        <h1>RefactorForms</h1>
+    <div id="RefactorForms">
+
     </div>
 </template>
 
 <script setup lang="ts">
+
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="auth-wrapper">
+        <aside class="auth-wrapper">
             <div class="auth-content">
                 <div class="auth-header">
                     <svg width="117" height="30" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -39,16 +39,22 @@
                 </form>
                 <div class="auth-footer">
                     <div class="auth-footer__item">
-                        Если возникла проблема, то можете написать <a href="#" class="default-link">Алёне из Сибтеха</a>
+                        Если возникла проблема, то можете написать
+                        <a href="#" class="default-link">Алёне из Сибтеха</a>
                     </div>
                     <div class="auth-footer__item">
-                        С любовью, ваш <a href="#" class="default-link">Сибтех</a>
+                        С любовью, ваш
+                        <a
+                            href="https://sibteh.org/"
+                            target="_blank"
+                            class="default-link"
+                        >Сибтех</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </aside>
         <img
-            src="/images/auth-decor.png"
+            src="/images/auth/auth-decor.png"
             alt="auth-decor"
             class="auth-decor"
         >
@@ -61,8 +67,8 @@ import { ref } from 'vue'
 import router from "@/router";
 
 //импорт компонентов
-import Input from '@/components/Inputs/Input/Input.vue'
-import Button from '@/components/Button/Button.vue'
+import Input from '@/components/ui/Inputs/Input/Input.vue'
+import Button from '@/components/ui/Button/Button.vue'
 
 //данные для компонента
 const inputs = ref([
@@ -88,7 +94,7 @@ const login = () => {
     //...
 
     //редирект на страницу "Список форм"
-    router.push('/refactor-forms')
+    router.push('/dashboard')
 }
 </script>
 

@@ -43,4 +43,12 @@ const props = defineProps({
             background-color: $base-primary
             color: $base-white
 
+    &.ghost
+        background: $base-white
+        color: $base-primary
+
+        &:hover
+            background-color: $base-error
+            color: $base-white
+
 </style>
