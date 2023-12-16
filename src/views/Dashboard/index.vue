@@ -4,12 +4,13 @@
             name="aside"
             class="dashboard__aside"
         />
-        <router-view />
+        <router-view
+            class="dashboard__content"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
-import FormsListAside from '@/components/Dashboard/DashboardAside/index.vue'
 
 </script>
 
@@ -17,6 +18,7 @@ import FormsListAside from '@/components/Dashboard/DashboardAside/index.vue'
 .dashboard
     display: flex
     gap: 30px
+    min-height: 100vh
     background: $base-gray
 
     &__aside
@@ -25,5 +27,10 @@ import FormsListAside from '@/components/Dashboard/DashboardAside/index.vue'
         height: 100vh
         background: $base-white
         border-radius: $default-br
+
+    &__content
+        max-width: calc(71% - 30px)
+        width: 100%
+        margin-left: auto
 
 </style>

@@ -60,6 +60,8 @@ const navItems = ref([
 
 <style scoped lang="sass">
 aside
+    position: fixed
+
     .aside
         &-content
             display: flex

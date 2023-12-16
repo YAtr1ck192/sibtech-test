@@ -29,7 +29,7 @@ const props = defineProps({
     font-size: 16px
     font-weight: 500
     line-height: normal
-    transition: background-color .3s ease-in-out
+    transition: all .3s ease-in-out
 
     &:hover
         background-color: #36933f
@@ -48,7 +48,7 @@ const props = defineProps({
         color: $base-primary
 
         &:hover
-            background-color: $base-error
+            background-color: $base-primary
             color: $base-white
 
 </style>

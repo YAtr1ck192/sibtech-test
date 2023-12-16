@@ -53,7 +53,7 @@ const formsList = ref([
         title: 'Форма регистрации участников 3',
         author: 'user 3',
         creationDate: '03.01.23'
-    },
+    }
 ])
 
 </script>
@@ -126,6 +126,10 @@ const formsList = ref([
                 justify-content: space-between
                 max-width: 180px
                 width: 100%
+
+                .ghost:hover
+                    background-color: $base-error
+                    color: $base-white
 
 
 </style>
