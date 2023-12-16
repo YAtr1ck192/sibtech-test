@@ -21,6 +21,7 @@
                     <Button
                         label="Редактировать"
                         class="light"
+                        @click="$router.push({name: 'form-settings', params: { id: item.id }})"
                     />
                     <Button
                         label="Удалить"
@@ -42,17 +43,20 @@ const formsList = ref([
     {
         title: 'Форма регистрации участников 1',
         author: 'user 1',
-        creationDate: '01.01.23'
+        creationDate: '01.01.23',
+        id: 1
     },
     {
         title: 'Форма регистрации участников 2',
         author: 'user 2',
-        creationDate: '02.01.23'
+        creationDate: '02.01.23',
+        id: 2
     },
     {
         title: 'Форма регистрации участников 3',
         author: 'user 3',
-        creationDate: '03.01.23'
+        creationDate: '03.01.23',
+        id: 3
     }
 ])
 

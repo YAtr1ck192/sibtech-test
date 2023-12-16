@@ -18,24 +18,55 @@
                     </defs>
                 </svg>
             </router-link>
+
             <nav class="aside-nav">
+                <router-link
+                    v-if="!isFormsList"
+                    to="/dashboard/forms"
+                    class="aside-link__go-back"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M7.91659 5H2.08325" stroke="black" stroke-width="1.25" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M4.99992 7.91732L2.08325 5.00065L4.99992 2.08398" stroke="black" stroke-width="1.25"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p>Назад</p>
+                </router-link>
+
                 <router-link
                     v-for="(item, index) in navItems"
                     :key="index"
                     :class="[
                         'aside-nav__item',
-                        { '_active' : $router.currentRoute.value.fullPath === item.link }
+                        { '_active' : $router.currentRoute.value.name === item.name }
                     ]"
-                    :to="item.link"
+                    :to="item.name"
                 >
                     {{ item.label }}
                 </router-link>
             </nav>
-            <div class="aside-footer">
+
+            <div
+                class="aside-footer"
+                v-if="isFormsList"
+            >
                 <Button
                     label="Выход"
                     class="light"
                     @click="$router.replace('/')"
+                />
+            </div>
+            <div
+                v-if="!isFormsList"
+                class="aside-footer"
+            >
+                <Button
+                    label="Скрипт"
+                    class="light"
+                />
+                <Button
+                    label="Сохранить"
                 />
             </div>
         </div>
@@ -43,19 +74,29 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import {ref, computed} from "vue";
+import {useRouter} from 'vue-router';
+
 import Button from "@/components/ui/Button/Button.vue";
 
-const navItems = ref([
-    {
-        label: 'Формы',
-        link: '/dashboard/forms'
-    },
-    {
-        label: 'Пользователи',
-        link: '/dashboard/users'
-    }
-])
+const router = useRouter();
+const isFormsList = computed(() => {
+    return router.currentRoute.value.fullPath === '/dashboard/forms' ||
+        router.currentRoute.value.fullPath === '/dashboard/users'
+})
+
+const navItems = computed(() => {
+    return isFormsList.value ? [
+        { label: 'Формы',name: 'forms' },
+        { label: 'Пользователи',name: 'users' }
+    ] : [
+        { label: 'Тип формы', name: 'forms-type' },
+        { label: 'Сущности', name: 'entities' },
+        { label: 'Поля', name: 'fields' },
+        { label: 'Правила показа полей', name: 'fields-rules' },
+        { label: 'Другие настройки', name: 'other-settings' }
+    ]
+})
 </script>
 
 <style scoped lang="sass">
@@ -70,7 +111,31 @@ aside
             gap: 30px
             width: 100%
             height: 100vh
-            padding: 80px 80px 80px 170px
+            padding: 80px 80px 80px 160px
+
+        &-link
+            &__go-back
+                display: flex
+                align-items: center
+                gap: 8px
+                width: max-content
+                padding: 6px 0
+                margin-bottom: 34px
+                text-decoration: none
+                color: $base-black
+                font-size: 16px
+                font-weight: 400
+                line-height: normal
+                transition: color ease-in-out .3s
+
+                svg path
+                    transition: stroke ease-in-out .3s
+
+                &:hover
+                    color: $base-primary
+
+                    svg path
+                        stroke: $base-primary
 
         &-nav
             display: flex
@@ -90,6 +155,9 @@ aside
                     color: $base-primary
 
         &-footer
+            display: flex
+            flex-direction: column
+            gap: 10px
             max-width: 160px
             width: 100%
             margin-top: auto

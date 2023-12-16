@@ -13,3 +13,21 @@ a
 .default-link
     color: $base-primary
     text-decoration-line: underline
+
+.dashboard
+    display: flex
+    gap: 30px
+    min-height: 100vh
+    background: $base-gray
+
+    &__aside
+        max-width: 30%
+        width: 100%
+        height: 100vh
+        background: $base-white
+        border-radius: $default-br
+
+    &__content
+        max-width: calc(70% - 30px)
+        width: 100%
+        margin-left: auto
